@@ -37,31 +37,19 @@ public class NetmindSpringBootProjectApplication {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 
-			http.antMatcher("/api/**").csrf().disable()
+			http.csrf().disable()
 					.addFilterAfter(new JWTAuthorizationFilter(),
 							UsernamePasswordAuthenticationFilter.class)
 					.authorizeRequests()
-					.antMatchers(HttpMethod.POST, "/api/user").permitAll()
-					.anyRequest().authenticated();
-
-		}
-
-	}
-
-	@Configuration
-	public static class AnySecurityConfig2
-			extends WebSecurityConfigurerAdapter {
-
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			http.authorizeRequests()
 					.antMatchers(HttpMethod.GET, "/", "/v2/api-docs", // swagger
 							"/webjars/**", // swagger-ui webjars
 							"/swagger-resources/**", // swagger-ui resources
 							"/configuration/**", // swagger configuration
 							"/*.html", "/favicon.ico", "/**/*.html",
 							"/**/*.css", "/**/*.js")
-					.permitAll();
+					.permitAll().antMatchers(HttpMethod.POST, "/user")
+					.permitAll().anyRequest().authenticated();
+
 		}
 
 	}
