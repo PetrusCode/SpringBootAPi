@@ -7,12 +7,15 @@
 	"item": [
 		{
 			"name": "GET",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoicGVkcm8iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjIwMTUwODc2LCJleHAiOjE2MjAxNTE0NzZ9.EATUy5zgSmrhjIeyPdS2xtgvJEKrxoU6r0koYJQwdgp9tKoDeMtj_8Q921_j1tCv857NkjtUplhqEvS7c_2UpA",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoicGVkcm8iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjIwMjQ3NjA1LCJleHAiOjE2MjAyNDgyMDV9.PmQilHiXgqyDDBE0_wRS-y7Qph79AWsKnDjApO4w_eb40fj-LvtfdZsJX7GIiz5PrxGpAtZANsCGmPkDX1qw3w",
 						"type": "text"
 					}
 				],
@@ -22,14 +25,21 @@
 						{
 							"key": "user",
 							"value": "",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "password",
 							"value": "",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						}
-					]
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:8080/employee/employees",
@@ -54,8 +64,9 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "847d533b-6f67-4d35-bb1e-b3a3356e84cb",
-						"type": "text"
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoicGVkcm8iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjIwMTI3ODQ1LCJleHAiOjE2MjAxMjg0NDV9.uyxCDpJm0UnUEgJEfgzyqdWMsNdxMdHteOtoy_g2hzzINPM9sPy2dduU0smkgHSTBhL7Odb_UQg6jYb5GjsKlQ",
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "user",
@@ -104,28 +115,26 @@
 						},
 						{
 							"key": "password",
-							"value": "0716aa34-1769-49ea-b22c-a2152a3ea9b2",
+							"value": "pwd",
 							"type": "text"
-						},
-						{
-							"key": "Authorization",
-							"value": "",
-							"type": "text",
-							"disabled": true
 						}
-					]
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/swagger-ui.html#",
+					"raw": "http://localhost:8080/user",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"swagger-ui.html"
-					],
-					"hash": ""
+						"user"
+					]
 				}
 			},
 			"response": []
@@ -133,7 +142,7 @@
 		{
 			"name": "DEL",
 			"request": {
-				"method": "POST",
+				"method": "DELETE",
 				"header": [
 					{
 						"key": "Authorization",
@@ -216,7 +225,7 @@
 		{
 			"name": "PUT",
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Authorization",
