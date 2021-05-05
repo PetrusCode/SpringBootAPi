@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,7 +29,6 @@ public class NetmindSpringBootProjectApplication {
 
 	@EnableWebSecurity
 	@Configuration
-	@Order(1)
 	public static class ApiWebSecurityConfigurationAdapter
 			extends WebSecurityConfigurerAdapter {
 
