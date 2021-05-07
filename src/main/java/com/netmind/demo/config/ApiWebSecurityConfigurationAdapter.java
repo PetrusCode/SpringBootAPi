@@ -25,8 +25,9 @@ public class ApiWebSecurityConfigurationAdapter
 						"/swagger-resources/**", // swagger-ui resources
 						"/configuration/**", // swagger configuration
 						"/*.html", "/favicon.ico", "/**/*.html", "/**/*.css",
-						"/**/*.js")
-				.permitAll().antMatchers(HttpMethod.POST, "/user").permitAll()
+						"/**/*.js", "/h2-ui/**",
+						"/h2-ui/login.do?jsessionid/**", "inicio/user")
+				.permitAll().antMatchers(HttpMethod.POST).permitAll()
 				.anyRequest().authenticated();
 
 	}
