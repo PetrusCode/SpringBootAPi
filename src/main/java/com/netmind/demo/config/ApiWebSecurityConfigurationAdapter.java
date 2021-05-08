@@ -16,6 +16,22 @@ public class ApiWebSecurityConfigurationAdapter
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
+		// http.csrf().disable()
+		// .addFilterAfter(new JWTAuthorizationFilter(),
+		// UsernamePasswordAuthenticationFilter.class)
+		// .authorizeRequests()
+		// .antMatchers(HttpMethod.GET, "/", "/v2/api-docs", // swagger
+		// "/webjars/**", // swagger-ui webjars
+		// "/swagger-resources/**", // swagger-ui resources
+		// "/configuration/**", // swagger configuration
+		// "/*.html", "/favicon.ico", "/**/*.html", "/**/*.css",
+		// "/**/*.js")
+		// .permitAll().and().authorizeRequests().antMatchers("/h2-ui/**")
+		// .permitAll().and().ignoringAntMatchers("/h2-ui/**").and()
+		// .headers().frameOptions().sameOrigin().and().authorizeRequests()
+		// .antMatchers(HttpMethod.POST, "/user").permitAll().anyRequest()
+		// .authenticated();
+
 		http.csrf().disable()
 				.addFilterAfter(new JWTAuthorizationFilter(),
 						UsernamePasswordAuthenticationFilter.class)
@@ -25,10 +41,16 @@ public class ApiWebSecurityConfigurationAdapter
 						"/swagger-resources/**", // swagger-ui resources
 						"/configuration/**", // swagger configuration
 						"/*.html", "/favicon.ico", "/**/*.html", "/**/*.css",
-						"/**/*.js", "/h2-ui/**",
-						"/h2-ui/login.do?jsessionid/**", "inicio/user")
-				.permitAll().antMatchers(HttpMethod.POST).permitAll()
-				.anyRequest().authenticated();
-
+						"/**/*.js")
+				.permitAll()
+				.antMatchers(HttpMethod.GET, "/employee/*", "/employeeh2/*",
+						"/user", "/user/*")
+				.permitAll()
+				.antMatchers(HttpMethod.POST, "/employee/*", "/employeeh2/*",
+						"/user", "/user/*")
+				.permitAll().antMatchers("/h2-ui/**").permitAll().anyRequest()
+				.authenticated();
+		http.csrf().disable();
+		http.headers().frameOptions().disable();
 	}
 }

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +24,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @CrossOrigin
 @RestController
-@RequestMapping("inicio")
 public class UserController {
 	@Autowired
 	private UserRepository userRepository;
@@ -37,11 +35,13 @@ public class UserController {
 
 		String token = getJWTToken(username);
 		User user = new User();
-		user.setUser(username);
-		user.setPwd(pwd);
+		user.setUsername(username);
+		user.setPassword(pwd);
 		user.setToken(token);
-
-		if (!user.getUser().equals("test") || !user.getPwd().equals("test"))
+		User foundUser = userRepository.findByUsernameAndPassword(username,
+				pwd);
+		System.out.println(foundUser);
+		if (foundUser == null)
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 
 		return new ResponseEntity<>(user, HttpStatus.OK);

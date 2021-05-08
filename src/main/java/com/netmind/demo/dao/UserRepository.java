@@ -6,4 +6,7 @@ import com.netmind.demo.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
+	User findByUsernameAndPassword(String username, String password);
+
+	// Optional<User> findByEmail(String email);
 }

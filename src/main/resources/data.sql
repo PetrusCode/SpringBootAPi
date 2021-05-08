@@ -2,6 +2,11 @@ insert into EMPLOYEE(ID, EMAIL, FIRST_NAME, LAST_NAME)
 VALUES 
 (1, 'pedro@gmil.com', 'Pedro', 'Segura');
 
+insert into USERS(IdUser, USERNAME, PASSWORD)
+VALUES 
+(1, 'pepe', 'pepe');
+
+/*
 DROP TABLE IF EXISTS billionaires;
 
 CREATE TABLE billionaires (
@@ -14,4 +19,4 @@ CREATE TABLE billionaires (
 INSERT INTO billionaires (first_name, last_name, career) VALUES
   ('Aliko', 'Dangote', 'Billionaire Industrialist'),
   ('Bill', 'Gates', 'Billionaire Tech Entrepreneur'),
-  ('Folrunsho', 'Alakija', 'Billionaire Oil Magnate');
+  ('Folrunsho', 'Alakija', 'Billionaire Oil Magnate');*/
