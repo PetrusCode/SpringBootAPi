@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,11 +31,11 @@ import lombok.NoArgsConstructor;
 public class Pedidos implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	@NotNull(message = "The id should not be null")
 	@Positive(message = "The id should be greater than 0")
-	private Integer idPedidos;
+	private Integer id;
 
 	@Column(name = "fechaHoraEntrega")
 	@NotNull(message = "This field is mandatory")
@@ -52,8 +53,8 @@ public class Pedidos implements Serializable {
 	private String detallesPedido;
 
 	// bi-directional many-to-one association to Cliente
-	@ManyToOne
-	@JoinColumn(name = "idCliente")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cliente_id", referencedColumnName = "id_cliente")
 	private Cliente cliente;
 
 }

@@ -36,11 +36,12 @@ import lombok.NoArgsConstructor;
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	@NotNull(message = "The id should not be null")
 	@Positive(message = "The id should be greater than 0")
-	private Integer IdCliente;
+	@Column(name = "id_cliente")
+	private Integer idcliente;
 
 	@Column(name = "nombre")
 	@NotNull(message = "This field is mandatory")
@@ -55,7 +56,7 @@ public class Cliente implements Serializable {
 	@Column(name = "dni")
 	@NotNull(message = "This field is mandatory")
 	@NotBlank(message = "This field cant be blank")
-	private Integer dni;
+	private String dni;
 
 	// bi-directional many-to-one association to Pedidos
 	@OneToMany(mappedBy = "cliente")
